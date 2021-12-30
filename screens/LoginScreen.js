@@ -1,5 +1,4 @@
 import * as React from 'react'
-// import { GoogleSignin, GoogleSigninButton } from '@react-native-google-signin/google-signin';
 
 import {
     Button,
@@ -11,6 +10,12 @@ import {
 } from 'react-native';
 
 import logo from '../assets/logo.png';
+
+// import { GoogleSignin, GoogleSigninButton } from '@react-native-google-signin/google-signin';
+
+
+
+
 
 const { useEffect, useState } = React;
 
@@ -29,7 +34,7 @@ export default LoginScreen = ({ navigation }) => {
     }
 
     const handleRegister = () => {
-
+        alert('TODO: RegisterScreen')
     }
 
     return (
@@ -46,11 +51,18 @@ export default LoginScreen = ({ navigation }) => {
                 placeholderTextColor="#fff"
                 onChange={() => setDisableLogin(false)}
             />
-            <Text style={styles.nuevoUsuario} onPress={() => handleRegister} >¿ Nuevo usuario ?{"\n"} ¡ Click Aqui !</Text>
+            <Text
+                style={styles.nuevoUsuario}
+                onPress={handleRegister}
+            >
+                ¿ Nuevo usuario ?{"\n"} ¡ Click Aqui !
+            </Text>
             <View style={styles.hr} />
             <Button
+                style={styles.boton}
+                color={'#48c5cd'}
                 title="Login"
-                disabled={disableLogin}
+                // disabled={disableLogin}
                 onPress={handleLogin}
             />
             {/* <GoogleSigninButton
@@ -68,18 +80,22 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#2f558a',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     logo: {
         width: 200,
         height: 120,
-        marginBottom: 75,
+        marginBottom: 45,
         resizeMode: "contain"
     },
     input: {
         color: '#fff',
         height: 40,
-        textAlign: 'center'
+        width: 230,
+        margin: 5,
+        textAlign: 'center',
+        borderWidth: 1,
+        borderColor: '#fff'
     },
     nuevoUsuario: {
         color: '#fff',
@@ -87,11 +103,16 @@ const styles = StyleSheet.create({
         marginTop: 15,
         marginBottom: 15,
         fontSize: 15,
-        fontWeight: '500'
+        fontWeight: '500',
     },
     hr: {
         borderBottomColor: '#48c5cd',
         borderBottomWidth: 2,
-        width: '65%'
+        width: '65%',
+        marginTop: 2,
+        marginBottom: 10,
+    },
+    boton: {
+
     },
 });
