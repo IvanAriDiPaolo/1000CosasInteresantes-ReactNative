@@ -1,20 +1,14 @@
-import HomeScreen from './screens/HomeScreen';
-import LoginScreen from './screens/LoginScreen';
-import { NavigationContainer } from '@react-navigation/native';
+import MainStack from './navigation/MainStack';
+import { Provider } from 'react-redux';
 import { StyleSheet } from 'react-native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+// import { store } from './redux/store';
+import store from './redux/reducers/rootReducer'
 export default function App() {
 
-  const Stack = createNativeStackNavigator();
-
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName='logreg'>
-        <Stack.Screen options={{ headerShown: false }} name='logreg' component={LoginScreen} />
-        <Stack.Screen options={{ headerStyle: {backgroundColor: '#2f558a'} }} name='Home' component={HomeScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <MainStack />
+    </Provider>
   );
 }
 
