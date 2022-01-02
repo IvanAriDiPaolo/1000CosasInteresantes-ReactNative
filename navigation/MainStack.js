@@ -18,16 +18,17 @@ export default function MenuStack() {
     // const {isSignedIn} = useSelector( state => state.auth );
 
     const { logged } = useSelector(state => state.auth);
+    const { invitado } = useSelector(state => state.auth);
 
     return (
         <NavigationContainer>
             <MainStack.Navigator>
                 {
-                    logged ?
-                        <MainStack.Screen options={{ headerStyle: { backgroundColor: '#2f558a' }, headerShown: false }} name='TabStack' component={TabStack} />
-                        :
-                        <MainStack.Screen options={{ headerShown: false }} name='SignInStack' component={SignInStack} />
-
+                    logged
+                        ? <MainStack.Screen options={{ headerStyle: { backgroundColor: '#2f558a' }, headerShown: false }} name='TabStack' component={TabStack} />
+                        : invitado
+                            ? <MainStack.Screen options={{ headerStyle: { backgroundColor: '#2f558a' }, headerShown: false }} name='TabStack' component={TabStack} />
+                            : <MainStack.Screen options={{ headerShown: false }} name='SignInStack' component={SignInStack} />
                 }
             </MainStack.Navigator>
         </NavigationContainer>

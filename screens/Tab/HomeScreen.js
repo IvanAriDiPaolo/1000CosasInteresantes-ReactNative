@@ -1,12 +1,16 @@
-import { Button, StyleSheet, Text, View } from 'react-native'
+import { Button, Image, StyleSheet, Text, View } from 'react-native'
+import React, { useState } from 'react'
 
-import MenuHamburguesa from '../../components/MenuHamburguesa'
-import React from 'react'
+import Articulo from '../../components/Articulo';
+import ListaArticulos from '../../components/ListaArticulos';
+import colosseo from '../../assets/colosseo.png'
+import logo from '../../assets/logo.png';
 import { logoutUser } from '../../redux/actions/auth';
 import { useDispatch } from 'react-redux';
 
 const HomeScreen = ({ route, navigation }) => {
-    // console.log(route.params)
+
+    const [articuloSeleccionado, setArticuloSeleccionado] = useState(true)
 
     const dispatch = useDispatch();
 
@@ -14,14 +18,24 @@ const HomeScreen = ({ route, navigation }) => {
         dispatch(logoutUser())
     }
 
+
+
     return (
         <View style={styles.container}>
+            <Image source={colosseo} style={styles.colosseo} />
+            <Image source={logo} style={styles.logo} />
             {/* <Button title="Logout" onPress={() => navigation.navigate('Logreg')} /> */}
-            <Text>Home</Text>
-            <Button
+            {/* <Button
                 title='Logout'
-                onPress={handleLogout}
-            />
+                onPress={() => dispatch()}
+            /> */}
+            <View style={styles.articulos}>
+                {
+                    articuloSeleccionado
+                        ? <ListaArticulos />
+                        : <Articulo />
+                }
+            </View>
         </View>
     )
 }
@@ -32,6 +46,22 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#333333',
-        paddingTop: 50,
+        alignItems: 'center'
+    },
+    colosseo: {
+        width: '100%',
+        height: 230,
+        resizeMode: "contain",
+        position: 'absolute'
+    },
+    logo: {
+        width: 220,
+        height: 140,
+        // marginBottom: 15,
+        marginTop: 45,
+        resizeMode: "contain"
+    },
+    articulos: {
+        marginTop: 60
     }
 })

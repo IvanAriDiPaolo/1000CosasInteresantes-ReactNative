@@ -7,3 +7,11 @@ export const loginUser = () => ({
 export const logoutUser = () => ({
     type: types.logout
 })
+
+export const invitado = () => ({
+    type: types.invitado
+})
+
+export const registrado = () => ({
+    type: types.registrado
+})
