@@ -4,25 +4,17 @@ import { types } from "../types";
 export const tomarNoticias = () => {
     return async dispatch => {
         try {
-            const response = await fetch(`${URL_API}/noticias.json`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-
-            const result = await response.json();
-            const not = Object.keys(result).map(key => ({
-                ...result[key],
-                id: key,
-            }));
+            const response = await fetch(`${URL_API}/noticias.json`);
+            const json = await response.json();
+            // setData(json.movies);
             dispatch({
                 type: types.cargaNoticias,
-                payload: not
+                payload: json
             })
-
-        }
-        catch (err) {
-            console.log(err)
+        } catch (error) {
+            console.error(error);
+        } finally {
+            // setLoading(false);
         }
     }
 }

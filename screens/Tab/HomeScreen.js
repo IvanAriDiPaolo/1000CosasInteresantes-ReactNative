@@ -30,11 +30,11 @@ const HomeScreen = ({ route, navigation }) => {
                 onPress={() => dispatch()}
             /> */}
             <View style={styles.articulos}>
-                {
-                    articuloSeleccionado
-                        ? <ListaArticulos />
-                        : <Articulo />
-                }
+                {/* {
+                    articuloSeleccionado ? */}
+                <ListaArticulos />
+                {/* : <Articulo />
+                } */}
             </View>
         </View>
     )

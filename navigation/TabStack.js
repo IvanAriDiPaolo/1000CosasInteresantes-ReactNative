@@ -1,4 +1,5 @@
 import { Button, StyleSheet, Text, View } from 'react-native'
+import { useDispatch, useSelector } from 'react-redux';
 
 import BusquedaScreen from '../screens/Tab/BusquedaScreen';
 import DocumentosScreen from '../screens/Tab/DocumentosScreen';
@@ -7,11 +8,13 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import React from 'react'
 import ServiciosScreen from '../screens/Tab/ServiciosScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { useSelector } from 'react-redux';
+import { logoutUser } from '../redux/actions/auth';
 
-export default function TabStack() {
+export default function TabStack({ navigation, route }) {
 
     const Tab = createBottomTabNavigator();
+
+    const dispatch = useDispatch();
 
     const { logged } = useSelector(state => state.auth);
 
@@ -102,7 +105,21 @@ export default function TabStack() {
                     </>
                     :
                     <>
-                        <Tab.Screen options={{ headerStyle: { backgroundColor: '#2f558a' } }} name='Home' component={HomeScreen} />
+                        <Tab.Screen options={{
+                            headerStyle: { backgroundColor: '#2f558a' },
+                            headerTintColor: 'white',
+                            headerRight: () => (
+                                <Ionicons
+                                    color="#fff"
+                                    name="log-in-outline"
+                                    size={35}
+                                    style={styles.profileIcon}
+                                    onPress={() => {
+                                        dispatch(logoutUser())
+                                    }}
+                                />
+                            )
+                        }} name='Home' component={HomeScreen} />
                     </>
             }
         </Tab.Navigator >
@@ -111,7 +128,7 @@ export default function TabStack() {
 
 const styles = StyleSheet.create({
     backIcon: {
-        paddingLeft: 5
+        paddingLeft: 8
     },
     profileIcon: {
         paddingRight: 8

@@ -1,0 +1,34 @@
+{
+  "noticias" : [
+      {
+        "id" : "1",
+        "titulo" : "Asseverazzione",
+        "img" :"https://www.sage.com/es-es/blog/wp-content/uploads/sites/8/2017/12/ThinkstockPhotos-692732544.jpg",
+        "cont":"LoremAliquip excepteur dolore ex occaecat anim est ad tempor nulla. Consectetur aliqua Lorem anim adipisicing in est aliqua dolor amet est consequat eu mollit eu. Ad minim consectetur commodo cupidatat dolore do aute proident laborum proident exercitation culpa pariatur quis."
+      },
+      {
+        "id" : "2",
+        "titulo" : "Procurador",
+        "img" :"https://www.crearempresairlanda.com/wp-content/uploads/2020/10/documentos-necesarios.jpg",
+        "cont":"Amet consequat sunt velit aute consequat minim ut aute consectetur dolor commodo. Ad eiusmod id officia irure cillum aliqua qui irure est excepteur ea aliquip mollit. Tempor dolor magna quis nisi eu eiusmod laboris aliquip. Aliqua magna non ut ipsum qui sit ullamco reprehenderit tempor laborum est aliquip velit ut. Cillum consectetur aliquip ea dolor incididunt ut reprehenderit enim id labore dolore. Deserunt nostrud ad elit sint cillum est."
+      },
+      {
+        "id" : "3",
+        "titulo" : "Inundación",
+        "img" :"https://i.dailymail.co.uk/1s/2021/11/05/16/50111425-10170099-image-a-33_1636129881819.jpg",
+        "cont":"Anim excepteur anim aute eiusmod ex qui labore dolor aliqua labore excepteur laborum. Proident aliquip elit mollit qui culpa mollit anim ea do reprehenderit. Labore quis duis qui consectetur nostrud ea anim adipisicing cillum enim. In labore velit occaecat sit est ipsum magna ex commodo."
+      },
+      {
+        "id" : "4",
+        "titulo" : "El libro",
+        "img" :"https://www.estetica-mente.com/wp-content/uploads/2019/12/LIBRO.jpg",
+        "cont":"Consequat veniam commodo dolore amet magna Lorem commodo commodo occaecat anim ad eiusmod laboris sunt. Minim eu labore deserunt sint aliqua excepteur culpa deserunt eu quis nulla consectetur aliqua. Aliqua consequat officia dolor ut amet consectetur irure ea est. Nulla nostrud do ut elit ad excepteur non velit. Ea et in eiusmod aliquip labore exercitation amet. Amet excepteur labore nisi consectetur anim culpa ex magna. Nisi tempor dolore nisi labore veniam dolore duis laboris."
+      },
+      {
+        "id" : "5",
+        "titulo" : "Pasaportes",
+        "img" :"https://ansabrasil.com.br/webimages/al_news_476x/2019/10/31/9c74177766752b0a56d40faecbbd6f54.jpg",
+        "cont":"Mollit veniam dolor eiusmod laborum amet labore. Reprehenderit nostrud consectetur magna magna. Excepteur ea dolore pariatur Lorem culpa dolore amet exercitation cupidatat commodo voluptate in. Excepteur ut veniam amet nisi laboris enim ad qui quis."
+      }
+  ]
+}
