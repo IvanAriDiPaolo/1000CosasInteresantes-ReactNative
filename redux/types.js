@@ -7,7 +7,11 @@ export const types = {
     registrado: '[Auth] Registrado',
 
     //Noticias
-    cargaNoticias: '[Noticias] Carga',
-    noticiaSelecionada: '[Noticias] Seleccionada'
+    cargarNoticias: '[Noticias] Carga',
+    noticiaSelecionada: '[Noticias] Seleccionada',
     // noticiaSelecionada: '[Noticias] Seleccionada'
+
+    //Servicios
+    cargarServicios: '[Servicios] Carga',
+    servicioSeleccionado: '[Servicios] Seleccionado'
 }

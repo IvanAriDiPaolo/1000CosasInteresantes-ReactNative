@@ -18,7 +18,7 @@ export default function TabStack({ navigation, route }) {
 
     const { logged } = useSelector(state => state.auth);
 
-    const defaultHeader = {
+    const loggedHeader = {
         headerStyle: { backgroundColor: '#2f558a' },
         headerTintColor: '#fff',
         // headerLeft: () => (
@@ -35,6 +35,22 @@ export default function TabStack({ navigation, route }) {
                 name="person-circle-outline"
                 size={35}
                 style={styles.profileIcon}
+            />
+        )
+    }
+
+    const notLoggedHeader = {
+        headerStyle: { backgroundColor: '#2f558a', borderBottomWidth: 0 },
+        headerTintColor: 'white',
+        headerRight: () => (
+            <Ionicons
+                color="#fff"
+                name="log-in-outline"
+                size={35}
+                style={styles.profileIcon}
+                onPress={() => {
+                    dispatch(logoutUser())
+                }}
             />
         )
     }
@@ -76,6 +92,7 @@ export default function TabStack({ navigation, route }) {
                 tabBarInactiveTintColor: 'white',
                 tabBarInactiveBackgroundColor: '#2f558a',
                 tabBarActiveBackgroundColor: '#2f558a',
+                tabBarStyle: styles.container
             })}
         >
             {
@@ -83,43 +100,43 @@ export default function TabStack({ navigation, route }) {
                     ?
                     <>
                         <Tab.Screen
-                            options={defaultHeader}
+                            options={loggedHeader}
                             name='Home'
                             component={HomeScreen}
                         />
                         <Tab.Screen
-                            options={defaultHeader}
+                            options={loggedHeader}
                             name='Busqueda'
                             component={BusquedaScreen}
                         />
                         <Tab.Screen
-                            options={defaultHeader}
+                            options={loggedHeader}
                             name='Servicios'
                             component={ServiciosScreen}
                         />
                         <Tab.Screen
-                            options={defaultHeader}
+                            options={loggedHeader}
                             name='Documentos'
                             component={DocumentosScreen}
                         />
                     </>
                     :
                     <>
-                        <Tab.Screen options={{
-                            headerStyle: { backgroundColor: '#2f558a' },
-                            headerTintColor: 'white',
-                            headerRight: () => (
-                                <Ionicons
-                                    color="#fff"
-                                    name="log-in-outline"
-                                    size={35}
-                                    style={styles.profileIcon}
-                                    onPress={() => {
-                                        dispatch(logoutUser())
-                                    }}
-                                />
-                            )
-                        }} name='Home' component={HomeScreen} />
+                        <Tab.Screen
+                            options={notLoggedHeader}
+                            name='Home'
+                            component={HomeScreen}
+                        />
+                        <Tab.Screen
+                            options={notLoggedHeader}
+                            name='Busqueda'
+                            component={BusquedaScreen}
+                        />
+                        <Tab.Screen
+                            options={notLoggedHeader}
+                            name='Servicios'
+                            component={ServiciosScreen}
+                        />
                     </>
             }
         </Tab.Navigator >
@@ -127,6 +144,10 @@ export default function TabStack({ navigation, route }) {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        backgroundColor: '#2f558a',
+        borderTopWidth: 0
+    },
     backIcon: {
         paddingLeft: 8
     },

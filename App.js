@@ -1,14 +1,16 @@
 import MainStack from './navigation/MainStack';
+import { NavigationContainer } from '@react-navigation/native';
 import { Provider } from 'react-redux';
 import { StyleSheet } from 'react-native';
 // import { store } from './redux/store';
 import store from './redux/reducers/rootReducer'
 export default function App() {
-
   return (
-    <Provider store={store}>
-      <MainStack />
-    </Provider>
+    <NavigationContainer>
+      <Provider store={store}>
+        <MainStack />
+      </Provider>
+    </NavigationContainer>
   );
 }
 

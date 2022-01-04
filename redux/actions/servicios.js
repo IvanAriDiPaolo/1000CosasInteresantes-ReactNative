@@ -1,13 +1,13 @@
 import { URL_API } from "../../db/Database"
 import { types } from "../types";
 
-export const tomarNoticias = () => {
+export const tomarServicios = () => {
     return async dispatch => {
         try {
-            const response = await fetch(`${URL_API}/noticias.json`);
+            const response = await fetch(`${URL_API}/servicios.json`);
             const json = await response.json();
             dispatch({
-                type: types.cargarNoticias,
+                type: types.cargarServicios,
                 payload: json
             })
         } catch (error) {
@@ -18,7 +18,7 @@ export const tomarNoticias = () => {
     }
 }
 
-export const seleccionarNoticia = (noticia) => ({
-    type: types.noticiaSelecionada,
-    payload: noticia
+export const seleccionarServicio = (servicio) => ({
+    type: types.servicioSeleccionado,
+    payload: servicio
 })

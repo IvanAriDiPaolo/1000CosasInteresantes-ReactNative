@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
 import LoginScreen from '../screens/Auth/LoginScreen';
-import { NavigationContainer } from '@react-navigation/native';
 import SignInStack from './SignInStack';
 import { StyleSheet } from 'react-native'
 import TabStack from './TabStack';
@@ -21,17 +20,15 @@ export default function MenuStack() {
     const { invitado } = useSelector(state => state.auth);
 
     return (
-        <NavigationContainer>
-            <MainStack.Navigator>
-                {
-                    logged
+        <MainStack.Navigator>
+            {
+                logged
+                    ? <MainStack.Screen options={{ headerStyle: { backgroundColor: '#2f558a' }, headerShown: false }} name='TabStack' component={TabStack} />
+                    : invitado
                         ? <MainStack.Screen options={{ headerStyle: { backgroundColor: '#2f558a' }, headerShown: false }} name='TabStack' component={TabStack} />
-                        : invitado
-                            ? <MainStack.Screen options={{ headerStyle: { backgroundColor: '#2f558a' }, headerShown: false }} name='TabStack' component={TabStack} />
-                            : <MainStack.Screen options={{ headerShown: false }} name='SignInStack' component={SignInStack} />
-                }
-            </MainStack.Navigator>
-        </NavigationContainer>
+                        : <MainStack.Screen options={{ headerShown: false }} name='SignInStack' component={SignInStack} />
+            }
+        </MainStack.Navigator>
     )
 }
 

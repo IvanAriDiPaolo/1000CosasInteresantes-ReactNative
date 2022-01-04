@@ -1,40 +1,26 @@
 import { Button, Image, StyleSheet, Text, View } from 'react-native'
-import React, { useState } from 'react'
 
 import Articulo from '../../components/Articulo';
 import ListaArticulos from '../../components/ListaArticulos';
+import React from 'react'
 import colosseo from '../../assets/colosseo.png'
 import logo from '../../assets/logo.png';
-import { logoutUser } from '../../redux/actions/auth';
-import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const HomeScreen = ({ route, navigation }) => {
 
-    const [articuloSeleccionado, setArticuloSeleccionado] = useState(true)
-
-    const dispatch = useDispatch();
-
-    const handleLogout = () => {
-        dispatch(logoutUser())
-    }
-
-
+    const { noticiaSeleccionada } = useSelector(state => state.noticias);
 
     return (
         <View style={styles.container}>
             <Image source={colosseo} style={styles.colosseo} />
             <Image source={logo} style={styles.logo} />
-            {/* <Button title="Logout" onPress={() => navigation.navigate('Logreg')} /> */}
-            {/* <Button
-                title='Logout'
-                onPress={() => dispatch()}
-            /> */}
             <View style={styles.articulos}>
-                {/* {
-                    articuloSeleccionado ? */}
-                <ListaArticulos />
-                {/* : <Articulo />
-                } */}
+                {
+                    noticiaSeleccionada
+                        ? <Articulo navigation={navigation} />
+                        : <ListaArticulos />
+                }
             </View>
         </View>
     )
@@ -63,5 +49,6 @@ const styles = StyleSheet.create({
     },
     articulos: {
         marginTop: 60
-    }
+    },
+
 })

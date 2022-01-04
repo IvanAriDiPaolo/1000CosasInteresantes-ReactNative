@@ -1,36 +1,34 @@
-import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native'
+import { FlatList, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 
-import ArticuloEnLista from './ArticuloEnLista';
-import { tomarNoticias } from '../redux/actions/noticias';
+import { tomarServicios } from '../redux/actions/servicios';
 
-export default function ListaArticulos() {
+export default function ListaServicios() {
 
     const dispatch = useDispatch();
 
-    const { noticiasCargadas } = useSelector(state => state.noticias);
+    const { serviciosCargados } = useSelector(state => state.servicios);
 
     useEffect(() => {
-        dispatch(tomarNoticias())
+        dispatch(tomarServicios())
     }, [])
 
     return (
         <View style={{ flex: 1 }}>
             <FlatList
-                // columnWrapperStyle={{ justifyContent: 'space-between' }}
                 horizontal
                 ItemSeparatorComponent={
                     () => <View style={{ width: 15 }} />
                 }
 
                 contentContainerStyle={styles.lista}
-                // numColumns={2}
-                data={noticiasCargadas[0]}
+                data={serviciosCargados[0]}
                 style={styles.lista}
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => (
-                    <ArticuloEnLista item={item} />
+                    // <ArticuloEnLista item={item} />
+                    <Text>Hola</Text>
                 )}
             />
             <View style={{ alignItems: 'center', justifyContent: 'center' }}>
@@ -48,20 +46,19 @@ export default function ListaArticulos() {
 const styles = StyleSheet.create({
     lista: {
         height: 380,
+        marginTop: 25,
         paddingLeft: 7,
         paddingRight: 20,
         flexGrow: 0
     },
     cierre2: {
         color: '#fff',
-        marginTop: 5,
         fontSize: 18,
         lineHeight: 30,
         fontWeight: 'bold'
     },
     cierre1: {
         color: '#fff',
-        marginTop: 10,
         fontSize: 10,
         lineHeight: 20,
         fontWeight: 'bold'
