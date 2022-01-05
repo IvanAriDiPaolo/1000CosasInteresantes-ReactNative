@@ -28,7 +28,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#444444',
         borderColor: '#fff',
         borderWidth: 1,
-        borderRadius: 10,
+        borderRadius: 5,
+        flexGrow: 1,
     },
     titulo: {
         color: '#fff',
