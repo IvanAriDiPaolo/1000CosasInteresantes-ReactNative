@@ -5,6 +5,7 @@ import BusquedaScreen from '../screens/Tab/BusquedaScreen';
 import DocumentosScreen from '../screens/Tab/DocumentosScreen';
 import HomeScreen from '../screens/Tab/HomeScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import PerfilScreen from '../screens/Tab/PerfilScreen';
 import React from 'react'
 import ServiciosScreen from '../screens/Tab/ServiciosScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -21,38 +22,11 @@ export default function TabStack({ navigation, route }) {
     const loggedHeader = {
         headerStyle: { backgroundColor: '#2f558a' },
         headerTintColor: '#fff',
-        // headerLeft: () => (
-        //     <Ionicons
-        //         color="#fff"
-        //         name="arrow-back-outline"
-        //         size={35}
-        //         style={st    yles.backIcon}
-        //     />
-        // ),
-        headerRight: () => (
-            <Ionicons
-                color="#fff"
-                name="person-circle-outline"
-                size={35}
-                style={styles.profileIcon}
-            />
-        )
     }
 
     const notLoggedHeader = {
         headerStyle: { backgroundColor: '#2f558a', borderBottomWidth: 0 },
-        headerTintColor: 'white',
-        headerRight: () => (
-            <Ionicons
-                color="#fff"
-                name="log-in-outline"
-                size={35}
-                style={styles.profileIcon}
-                onPress={() => {
-                    dispatch(logoutUser())
-                }}
-            />
-        )
+        headerTintColor: 'white'
     }
 
     return (
@@ -81,6 +55,11 @@ export default function TabStack({ navigation, route }) {
                             iconName = focused
                                 ? 'folder'
                                 : 'folder-outline'
+                            break;
+                        case 'Perfil':
+                            iconName = focused
+                                ? 'person'
+                                : 'person-outline'
                             break;
 
                         default:
@@ -118,6 +97,11 @@ export default function TabStack({ navigation, route }) {
                             options={loggedHeader}
                             name='Documentos'
                             component={DocumentosScreen}
+                        />
+                        <Tab.Screen
+                            options={loggedHeader}
+                            name='Perfil'
+                            component={PerfilScreen}
                         />
                     </>
                     :

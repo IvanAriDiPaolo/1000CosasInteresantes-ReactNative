@@ -1,4 +1,4 @@
-import { FlatList, Image, StyleSheet, Text, View } from 'react-native'
+import { FlatList, Image, KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -53,7 +53,7 @@ const BusquedaScreen = ({ navigation }) => {
         setSinResutados(true);
     }
 
-
+    const keyboardVerticalOffset = Platform.OS === 'ios' ? 40 : 0
     return (
         <View style={styles.container}>
             <Image source={{ uri: 'https://www.hotelbrunelleschi.it/blog/wp-content/uploads/2021/05/monumenti-aperti-firenze-1-940x628.jpg' }} />
@@ -122,7 +122,14 @@ const BusquedaScreen = ({ navigation }) => {
                         />
             }
             {/* TODO: IOS no soporta el search abajo con position absolute */}
-            {/* <KeyboardAvoidingView behavior="padding" style={{ flex: 1, backgroundColor: "#FF0000", justifyContent: "flex-end" }}> */}
+            {/* <KeyboardAvoidingView
+                style={{
+                    flex: 1,
+                    alignItems: 'center'
+                }}
+                behavior={Platform.OS === "ios" ? "padding" : null}
+                keyboardVerticalOffset={Platform.OS === "ios" ? 64 : 0}
+            > */}
             <SearchBar
                 containerStyle={{
                     backgroundColor: '#333333',

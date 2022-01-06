@@ -44,6 +44,7 @@ export default function RegisterScreen({ navigation }) {
                     style={styles.input}
                     placeholder="Nombre completo"
                     placeholderTextColor="#fff"
+                    autoCapitalize='true'
                 />
                 <TextInput
                     style={styles.input}
@@ -54,6 +55,7 @@ export default function RegisterScreen({ navigation }) {
                     style={styles.input}
                     placeholder="Email"
                     placeholderTextColor="#fff"
+                    keyboardType='email-address'
                 />
                 <View style={styles.passwordView}>
                     <TextInput
@@ -95,9 +97,6 @@ export default function RegisterScreen({ navigation }) {
                 </View>
                 <Pressable
                     style={styles.boton}
-                    // color={'#48c5cd'}
-                    // title="Login"
-                    // disabled={disableLogin}
                     onPress={handleRegister}
                 >
                     <Text style={styles.botonTexto}>Registrarse</Text>
@@ -123,7 +122,7 @@ const styles = StyleSheet.create({
     },
     logo: {
         width: 220,
-        height: 140,
+        height: 200,
         resizeMode: "contain"
     },
     texto: {
