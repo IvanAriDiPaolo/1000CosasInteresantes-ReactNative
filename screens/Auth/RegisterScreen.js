@@ -21,10 +21,10 @@ export default function RegisterScreen({ navigation }) {
 
     const [showPassword, setshowPassword] = useState(false)
     const [showPassword2, setshowPassword2] = useState(false)
+    const [registerEnabled, setRegisterEnabled] = useState(false)
 
     const initialForm = {
         name: '',
-        user: '',
         email: '',
         password: '',
         password2: ''
@@ -34,7 +34,6 @@ export default function RegisterScreen({ navigation }) {
 
     const {
         name,
-        user,
         email,
         password,
         password2
@@ -47,7 +46,12 @@ export default function RegisterScreen({ navigation }) {
     }
 
     const handleRegister = () => {
-        dispatch(registrar(email, password));
+        if (name !== '' && password2 !== '' && password === password2) {
+            dispatch(registrar(email, password));
+            navigation.navigate('Login')
+        } else {
+            alert("Revisar campos para continuar con registro.")
+        }
     }
 
     return (
@@ -63,12 +67,6 @@ export default function RegisterScreen({ navigation }) {
                     value={name}
                     name="name"
                     placeholder="Nombre"
-                    onChange={handleInputChange}
-                />
-                <MyTextInput
-                    value={user}
-                    name="user"
-                    placeholder="Usuario"
                     onChange={handleInputChange}
                 />
                 <MyTextInput
@@ -121,6 +119,7 @@ export default function RegisterScreen({ navigation }) {
                 <Pressable
                     style={styles.boton}
                     onPress={handleRegister}
+                    disabled={registerEnabled}
                 >
                     <Text style={styles.botonTexto}>Registrarse</Text>
                 </Pressable>

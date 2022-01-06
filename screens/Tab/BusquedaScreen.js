@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     lista: {
-        paddingBottom: 140,
+        paddingBottom: 250,
         flexGrow: 1,
         marginTop: 15,
         paddingLeft: 7,

@@ -4,6 +4,7 @@ import {
     Button,
     Image,
     Keyboard,
+    Linking,
     Pressable,
     StyleSheet,
     Text,
@@ -130,6 +131,43 @@ export default LoginScreen = ({ navigation }) => {
                 onPress={this._signIn}
                 disabled={this.state.isSigninInProgress}
             />; */}
+                <View style={styles.social}>
+                    <Ionicons
+                        name="logo-instagram"
+                        size={30}
+                        color='#fff'
+                        style={styles.redSocial}
+                        onPress={() => Linking.openURL('https://www.instagram.com/1000cosasinteresantes/')}
+                    />
+                    <Ionicons
+                        name="logo-facebook"
+                        size={30}
+                        color='#fff'
+                        style={styles.redSocial}
+                        onPress={() => Linking.openURL('https://www.facebook.com/groups/ciudadaniaenitalia')}
+                    />
+                    <Ionicons
+                        name="logo-youtube"
+                        size={30}
+                        color='#fff'
+                        style={styles.redSocial}
+                        onPress={() => Linking.openURL('https://www.youtube.com/1000cosasinteresantes')}
+                    />
+                    <Ionicons
+                        name="paper-plane-outline"
+                        size={30}
+                        color='#fff'
+                        style={styles.redSocial}
+                        onPress={() => Linking.openURL('https://t.me/canal1000ci')}
+                    />
+                    <Ionicons
+                        name="musical-notes-outline"
+                        size={30}
+                        color='#fff'
+                        style={styles.redSocial}
+                        onPress={() => Linking.openURL('https://open.spotify.com/show/2saMUvUR6q69fj2GCkWEUM?si=bad6099f48254fef')}
+                    />
+                </View>
             </View>
         </TouchableWithoutFeedback >
     )
@@ -212,4 +250,14 @@ const styles = StyleSheet.create({
     passwordView: {
         flexDirection: 'row'
     },
+    social: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 30,
+        paddingLeft: 45
+    },
+    redSocial: {
+        width: 65,
+    }
 });
