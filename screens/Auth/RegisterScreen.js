@@ -11,14 +11,34 @@ import {
 import React, { useState } from 'react'
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import MyTextInput from '../../components/SignIn/MyTextInput';
 import logo from '../../assets/logo.png';
-import { registrado } from '../../redux/actions/auth';
+import { registrar } from '../../redux/actions/auth';
 import { useDispatch } from 'react-redux';
+import { useForm } from '../../hooks/useForm';
 
 export default function RegisterScreen({ navigation }) {
 
-    const [showPassword, setshowPassword] = useState(true)
-    const [showPassword2, setshowPassword2] = useState(true)
+    const [showPassword, setshowPassword] = useState(false)
+    const [showPassword2, setshowPassword2] = useState(false)
+
+    const initialForm = {
+        name: '',
+        user: '',
+        email: '',
+        password: '',
+        password2: ''
+    };
+
+    const [formValues, handleInputChange] = useForm(initialForm)
+
+    const {
+        name,
+        user,
+        email,
+        password,
+        password2
+    } = formValues;
 
     const dispatch = useDispatch();
 
@@ -27,8 +47,7 @@ export default function RegisterScreen({ navigation }) {
     }
 
     const handleRegister = () => {
-        dispatch(registrado());
-        navigation.navigate('Login');
+        dispatch(registrar(email, password));
     }
 
     return (
@@ -40,29 +59,32 @@ export default function RegisterScreen({ navigation }) {
                 >
                     CREA TU CUENTA
                 </Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Nombre completo"
-                    placeholderTextColor="#fff"
-                    autoCapitalize='true'
+                <MyTextInput
+                    value={name}
+                    name="name"
+                    placeholder="Nombre"
+                    onChange={handleInputChange}
                 />
-                <TextInput
-                    style={styles.input}
+                <MyTextInput
+                    value={user}
+                    name="user"
                     placeholder="Usuario"
-                    placeholderTextColor="#fff"
+                    onChange={handleInputChange}
                 />
-                <TextInput
-                    style={styles.input}
+                <MyTextInput
+                    value={email}
+                    name="email"
                     placeholder="Email"
-                    placeholderTextColor="#fff"
                     keyboardType='email-address'
+                    onChange={handleInputChange}
                 />
                 <View style={styles.passwordView}>
-                    <TextInput
-                        style={styles.input}
+                    <MyTextInput
+                        value={password}
+                        name="password"
                         placeholder="Contraseña"
-                        placeholderTextColor="#fff"
                         secureTextEntry={showPassword}
+                        onChange={handleInputChange}
                     />
                     <Ionicons
                         name={
@@ -77,11 +99,12 @@ export default function RegisterScreen({ navigation }) {
                     />
                 </View>
                 <View style={styles.passwordView}>
-                    <TextInput
-                        style={styles.input}
+                    <MyTextInput
+                        value={password2}
+                        name="password2"
                         placeholder="Repetir contraseña"
-                        placeholderTextColor="#fff"
-                        secureTextEntry={showPassword}
+                        secureTextEntry={showPassword2}
+                        onChange={handleInputChange}
                     />
                     <Ionicons
                         name={

@@ -26,7 +26,18 @@ export default function TabStack({ navigation, route }) {
 
     const notLoggedHeader = {
         headerStyle: { backgroundColor: '#2f558a', borderBottomWidth: 0 },
-        headerTintColor: 'white'
+        headerTintColor: 'white',
+        headerRight: () => (
+            <Ionicons
+                color="#fff"
+                name="log-in-outline"
+                size={35}
+                style={styles.profileIcon}
+                onPress={() => {
+                    dispatch(logoutUser())
+                }}
+            />
+        )
     }
 
     return (

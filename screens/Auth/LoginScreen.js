@@ -15,7 +15,9 @@ import { invitado, loginUser } from '../../redux/actions/auth';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import MyTextInput from '../../components/SignIn/MyTextInput';
 import logo from '../../assets/logo.png';
+import { useForm } from '../../hooks/useForm';
 
 // import { GoogleSignin, GoogleSigninButton } from '@react-native-google-signin/google-signin';
 
@@ -23,13 +25,24 @@ const { useEffect, useState } = React;
 
 export default LoginScreen = ({ navigation }) => {
 
-    const [disableLogin, setDisableLogin] = useState(true)
     const [showPassword, setshowPassword] = useState(true)
-    // const [isSignedIn, setIsSignedIn] = useState(true)
+
+    const initialForm = {
+        email: '',
+        password: '',
+    };
+
+    const [formValues, handleInputChange] = useForm(initialForm)
+
+    const {
+        email,
+        password,
+    } = formValues;
+
     const dispatch = useDispatch();
 
     const handleLogin = () => {
-        dispatch(loginUser())
+        dispatch(loginUser(email, password))
     }
 
     const handleInvitado = () => {
@@ -41,6 +54,7 @@ export default LoginScreen = ({ navigation }) => {
     }
 
     const { registrado } = useSelector(state => state.auth)
+
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -63,18 +77,20 @@ export default LoginScreen = ({ navigation }) => {
                         }
                     </View>
                 }
-                <TextInput
-                    style={styles.input}
-                    placeholder="Usuario o Email"
-                    placeholderTextColor="#fff"
+
+                <MyTextInput
+                    value={email}
+                    name="email"
+                    placeholder="Email"
+                    onChange={handleInputChange}
                 />
                 <View style={styles.passwordView}>
-                    <TextInput
-                        style={styles.input}
+                    <MyTextInput
+                        value={password}
+                        name="password"
                         placeholder="Contraseña"
-                        placeholderTextColor="#fff"
                         secureTextEntry={showPassword}
-                        onChange={() => setDisableLogin(false)}
+                        onChange={handleInputChange}
                     />
                     <Ionicons
                         name={

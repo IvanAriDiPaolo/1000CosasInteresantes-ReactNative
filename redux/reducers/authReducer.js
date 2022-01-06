@@ -7,7 +7,9 @@ export const authReducer = (state = {}, action) => {
             return {
                 ...state,
                 invitado: false,
-                logged: true
+                logged: true,
+                token: action.payload.idToken,
+                userId: action.payload.localId
             };
 
         case types.logout:
@@ -15,7 +17,9 @@ export const authReducer = (state = {}, action) => {
                 ...state,
                 invitado: false,
                 logged: false,
-                registrado: false
+                registrado: false,
+                token: null,
+                userId: null
             };
 
         case types.invitado:
