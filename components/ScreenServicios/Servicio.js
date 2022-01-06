@@ -1,9 +1,9 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Dimensions, Pressable, StyleSheet, Text, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import React from 'react'
-import { seleccionarServicio } from '../redux/actions/servicios';
+import { seleccionarServicio } from '../../redux/actions/servicios';
 
 export default function Servicio() {
     const dispatch = useDispatch();
@@ -14,7 +14,12 @@ export default function Servicio() {
         dispatch(seleccionarServicio(null));
     }
 
-    console.log(servicioSeleccionado)
+    const pantalla = Dimensions.get('window').height;
+
+    const handleSolicitarSinLogin = () => {
+        alert(`Necesitas estar logueado \n para poder solicitar servicios.`);
+    }
+
     return (
         <View style={styles.container}>
             <Ionicons
@@ -24,7 +29,7 @@ export default function Servicio() {
                 onPress={handleServicio}
                 style={styles.back}
             />
-            <Ionicons name={servicioSeleccionado.icon} size={55} color={'#000'} style={{ marginTop: 20 }} />
+            <Ionicons name={servicioSeleccionado.icon} size={45} color={'#000'} style={{ marginTop: 20 }} />
             <Text style={styles.titulo}>{servicioSeleccionado.titulo}</Text>
             <Text style={styles.contenido}>{servicioSeleccionado.abreviado}</Text>
             {
@@ -34,7 +39,7 @@ export default function Servicio() {
                         <Text style={styles.solicitarTexto}> Solicitar </Text>
                     </Pressable>
                     :
-                    <Pressable style={styles.solicitar} onPress={() => alert(`Necesitas estar logueado \n para poder solicitar servicios.`)}>
+                    <Pressable style={[styles.solicitar, pantalla > 800 && styles.solicitar2]} onPress={handleSolicitarSinLogin}>
                         <Text style={styles.solicitarTexto}> Loguearse {'\n'} para solicitar </Text>
                     </Pressable>
             }
@@ -46,7 +51,7 @@ const styles = StyleSheet.create({
     container: {
         marginTop: 60,
         backgroundColor: '#fff',
-        width: 330,
+        width: '90%',
         height: '70%',
         borderRadius: 10,
         // paddingLeft: 20,
@@ -60,7 +65,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     contenido: {
-        marginTop: 31,
+        marginTop: 5,
         color: '#000',
         fontSize: 15,
         textAlign: 'center',
@@ -81,6 +86,9 @@ const styles = StyleSheet.create({
         height: 60,
         justifyContent: 'center',
         borderRadius: 5,
+        marginTop: 5
+    },
+    solicitar2: {
         marginTop: 20
     }
 })

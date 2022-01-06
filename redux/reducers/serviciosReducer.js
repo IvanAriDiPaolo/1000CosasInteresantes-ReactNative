@@ -12,7 +12,7 @@ export const serviciosReducer = (state = initialState, action) => {
             return {
                 ...state,
                 serviciosCargados: [
-                    ...state.serviciosCargados,
+                    // ...state.serviciosCargados,
                     action.payload
                 ]
             }

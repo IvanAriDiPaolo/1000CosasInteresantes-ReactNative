@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import React from 'react'
-import { seleccionarNoticia } from '../redux/actions/noticias';
+import { seleccionarNoticia } from '../../redux/actions/noticias';
 
 export default function Articulo({ navigation }) {
     const dispatch = useDispatch();

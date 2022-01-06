@@ -1,7 +1,7 @@
 import { Button, Image, StyleSheet, Text, View } from 'react-native'
 
-import Articulo from '../../components/Articulo';
-import ListaArticulos from '../../components/ListaArticulos';
+import Articulo from '../../components/ScreenHome/Articulo';
+import ListaArticulos from '../../components/ScreenHome/ListaArticulos';
 import React from 'react'
 import colosseo from '../../assets/colosseo.png'
 import logo from '../../assets/logo.png';

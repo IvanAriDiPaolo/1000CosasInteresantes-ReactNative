@@ -12,7 +12,7 @@ export const noticiasReducer = (state = initialState, action) => {
             return {
                 ...state,
                 noticiasCargadas: [
-                    ...state.noticiasCargadas,
+                    // ...state.noticiasCargadas,
                     action.payload
                 ]
             }

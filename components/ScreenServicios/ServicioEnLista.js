@@ -2,7 +2,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native'
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import React from 'react'
-import { seleccionarServicio } from '../redux/actions/servicios';
+import { seleccionarServicio } from '../../redux/actions/servicios';
 import { useDispatch } from 'react-redux';
 
 export default function ServicioEnLista({ item }) {

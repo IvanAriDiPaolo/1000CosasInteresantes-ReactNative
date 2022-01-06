@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 
 import LoginScreen from '../screens/Auth/LoginScreen';
 import SignInStack from './SignInStack';
 import { StyleSheet } from 'react-native'
 import TabStack from './TabStack';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { useSelector } from 'react-redux';
+import { tomarDb } from '../redux/actions/db';
+import { tomarNoticias } from '../redux/actions/noticias';
+import { tomarServicios } from '../redux/actions/servicios';
 
 // import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -14,7 +17,13 @@ export default function MenuStack() {
 
     const MainStack = createNativeStackNavigator();
 
-    // const {isSignedIn} = useSelector( state => state.auth );
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(tomarNoticias())
+        dispatch(tomarServicios())
+        dispatch(tomarDb())
+    }, [])
 
     const { logged } = useSelector(state => state.auth);
     const { invitado } = useSelector(state => state.auth);

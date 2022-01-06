@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 
 import ArticuloEnLista from './ArticuloEnLista';
-import { tomarNoticias } from '../redux/actions/noticias';
+import { tomarNoticias } from '../../redux/actions/noticias';
 
 export default function ListaArticulos() {
 
@@ -18,14 +18,12 @@ export default function ListaArticulos() {
     return (
         <View style={{ flex: 1 }}>
             <FlatList
-                // columnWrapperStyle={{ justifyContent: 'space-between' }}
                 horizontal
                 ItemSeparatorComponent={
-                    () => <View style={{ width: 15 }} />
+                    () => <View style={{ width: 10 }} />
                 }
 
-                contentContainerStyle={styles.lista}
-                // numColumns={2}
+                // contentContainerStyle={styles.lista}
                 data={noticiasCargadas[0]}
                 style={styles.lista}
                 keyExtractor={(item) => item.id}
@@ -47,9 +45,9 @@ export default function ListaArticulos() {
 
 const styles = StyleSheet.create({
     lista: {
-        height: 380,
-        paddingLeft: 7,
-        paddingRight: 20,
+        height: '50%',
+        paddingLeft: 5,
+        paddingRight: 10,
         flexGrow: 0
     },
     cierre2: {
@@ -57,13 +55,13 @@ const styles = StyleSheet.create({
         marginTop: 5,
         fontSize: 18,
         lineHeight: 30,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     },
     cierre1: {
         color: '#fff',
         marginTop: 10,
         fontSize: 10,
         lineHeight: 20,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     }
 })

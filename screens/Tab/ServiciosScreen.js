@@ -1,8 +1,8 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect } from 'react'
 
-import ListaServicios from '../../components/ListaServicios';
-import Servicio from '../../components/Servicio';
+import ListaServicios from '../../components/ScreenServicios/ListaServicios';
+import Servicio from '../../components/ScreenServicios/Servicio';
 import logo from '../../assets/logo.png';
 import { useSelector } from 'react-redux';
 
@@ -14,7 +14,10 @@ const ServiciosScreen = ({ route, navigation }) => {
         <View style={styles.container}>
             <Image source={{ uri: 'https://www.dltviaggi.it/immagine/13124/Venezia.jpg' }} style={styles.colosseo} />
             <Image source={logo} style={styles.logo} />
-            <View style={styles.servicios}>
+            <Text style={styles.serviciosTexto}>
+                Nuestros servicios:
+            </Text>
+            <View style={styles.servicios} nestedScrollEnabled>
                 {
                     servicioSeleccionado
                         ? <Servicio />
@@ -35,18 +38,32 @@ const styles = StyleSheet.create({
     },
     colosseo: {
         width: '100%',
-        height: 275,
+        height: 270,
         resizeMode: "contain",
-        position: 'absolute'
+        position: 'absolute',
+        zIndex: 1
     },
     logo: {
         width: 220,
         height: 140,
         marginTop: 45,
-        resizeMode: "contain"
+        resizeMode: "contain",
+        zIndex: 2
     },
     servicios: {
-        marginTop: 60
+        flex: 1,
+        flexGrow: 1,
     },
-
+    serviciosTexto: {
+        color: '#fff',
+        fontSize: 25,
+        fontWeight: 'bold',
+        marginTop: 60,
+        zIndex: 3,
+        backgroundColor: '#333333',
+        width: 260,
+        textAlign: 'center',
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15,
+    }
 })

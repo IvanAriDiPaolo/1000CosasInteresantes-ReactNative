@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 
 import ServicioEnLista from './ServicioEnLista';
-import { tomarServicios } from '../redux/actions/servicios';
+import { tomarServicios } from '../../redux/actions/servicios';
 
 export default function ListaServicios() {
 
@@ -18,6 +18,7 @@ export default function ListaServicios() {
     return (
         <View style={{ height: '100%', alignItems: 'center' }}>
             <FlatList
+                nestedScrollEnabled
                 ItemSeparatorComponent={
                     () => <View
                         style={{
@@ -33,18 +34,17 @@ export default function ListaServicios() {
                     <ServicioEnLista item={item} />
                 )}
             />
-        </View>
+        </View >
     )
 }
 
 const styles = StyleSheet.create({
     lista: {
-        // flex: 1,
-        // flexGrow: 1,
-        height: '100%',
-        marginTop: 55,
+        paddingBottom: 140,
+        flexGrow: 1,
+        marginTop: 15,
         paddingLeft: 7,
         paddingRight: 20,
-        alignItems: 'center'
+        alignItems: 'center',
     }
 })

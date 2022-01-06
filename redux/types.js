@@ -13,5 +13,8 @@ export const types = {
 
     //Servicios
     cargarServicios: '[Servicios] Carga',
-    servicioSeleccionado: '[Servicios] Seleccionado'
+    servicioSeleccionado: '[Servicios] Seleccionado',
+
+    //Servicios
+    cargarDb: '[DB] Cargada'
 }

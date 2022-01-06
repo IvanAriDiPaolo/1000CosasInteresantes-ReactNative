@@ -1,7 +1,7 @@
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 
 import React from 'react'
-import { seleccionarNoticia } from '../redux/actions/noticias';
+import { seleccionarNoticia } from '../../redux/actions/noticias';
 import { useDispatch } from 'react-redux';
 
 export default function ArticuloEnLista({ item }) {
@@ -24,7 +24,7 @@ export default function ArticuloEnLista({ item }) {
 const styles = StyleSheet.create({
     articuloEnLista: {
         width: 240,
-        height: 370,
+        height: '100%',
         backgroundColor: '#444444',
         borderColor: '#fff',
         borderWidth: 1,
@@ -33,10 +33,9 @@ const styles = StyleSheet.create({
     },
     titulo: {
         color: '#fff',
-        fontSize: 15,
+        fontSize: 20,
         padding: 10,
         fontWeight: 'bold',
-        marginBottom: 5,
     },
     abreviado: {
         padding: 10,
@@ -44,7 +43,6 @@ const styles = StyleSheet.create({
         fontSize: 12,
     },
     imagenes: {
-        marginTop: 5,
-        height: 250
+        height: '60%'
     },
 })
