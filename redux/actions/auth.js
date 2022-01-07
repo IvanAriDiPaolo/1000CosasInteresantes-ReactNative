@@ -1,8 +1,9 @@
 import { LOG_IN_URL, SIGN_UP_URL } from "../../db/Database"
 
+import { agregarUsuarioDB } from "../../helpers/agregarUsuarioDB"
 import { types } from "../types"
 
-export const registrar = (email, password) => {
+export const registrar = (name, email, password) => {
     return async dispatch => {
         try {
             const response = await fetch(SIGN_UP_URL, {
@@ -52,7 +53,10 @@ export const registrar = (email, password) => {
                 dispatch({
                     type: types.registrado,
                     payload: data
-                })
+                });
+
+                agregarUsuarioDB(data.localId, name, email);
+
             }
 
         } catch (error) {

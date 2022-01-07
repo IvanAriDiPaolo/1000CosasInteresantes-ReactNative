@@ -1,3 +1,5 @@
+import { db, firebaseApp } from './db/firestore';
+
 import MainStack from './navigation/MainStack';
 import { NavigationContainer } from '@react-navigation/native';
 import { Provider } from 'react-redux';

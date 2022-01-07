@@ -11,7 +11,9 @@ import {
 import React, { useState } from 'react'
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { LogBox } from 'react-native';
 import MyTextInput from '../../components/SignIn/MyTextInput';
+import { agregarUsuarioDB } from '../../helpers/agregarUsuarioDB';
 import logo from '../../assets/logo.png';
 import { registrar } from '../../redux/actions/auth';
 import { useDispatch } from 'react-redux';
@@ -21,7 +23,6 @@ export default function RegisterScreen({ navigation }) {
 
     const [showPassword, setshowPassword] = useState(false)
     const [showPassword2, setshowPassword2] = useState(false)
-    const [registerEnabled, setRegisterEnabled] = useState(false)
 
     const initialForm = {
         name: '',
@@ -47,8 +48,9 @@ export default function RegisterScreen({ navigation }) {
 
     const handleRegister = () => {
         if (name !== '' && password2 !== '' && password === password2) {
-            dispatch(registrar(email, password));
-            navigation.navigate('Login')
+            dispatch(registrar(name, email, password));
+
+            navigation.navigate('Login');
         } else {
             alert("Revisar campos para continuar con registro.")
         }
@@ -119,7 +121,6 @@ export default function RegisterScreen({ navigation }) {
                 <Pressable
                     style={styles.boton}
                     onPress={handleRegister}
-                    disabled={registerEnabled}
                 >
                     <Text style={styles.botonTexto}>Registrarse</Text>
                 </Pressable>
