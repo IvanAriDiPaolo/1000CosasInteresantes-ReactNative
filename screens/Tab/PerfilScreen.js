@@ -1,44 +1,40 @@
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
+import { Image, LogBox, Pressable, StyleSheet, Text, View, YellowBox } from 'react-native'
 import React, { useEffect } from 'react'
-import { collection, getDocs, query, where } from "firebase/firestore";
-import { logoutUser, setActiveUser } from '../../redux/actions/auth';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { logoutUser, tomarUsuarioDB } from '../../redux/actions/auth';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { LogBox } from "react-native";
 import { db } from '../../db/firestore';
 import imagen from '../../assets/profile.jpg';
-
-// import { db } from "../db/firestore";
-
-
-
+import { setActiveUser } from '../../redux/actions/auth';
 
 export default function PerfilScreen() {
 
     const dispatch = useDispatch();
 
+    // const tomarUsuarioDB = async (uid) => {
+    //     try {
+    //         LogBox.ignoreLogs(['Setting a timer']);
+    //         const q = query(collection(db, "usuarios"), where("uid", "==", uid));
+    //         const querySnapshot = await getDocs(q);
+    //         querySnapshot.forEach((doc) => {
+    //             let userData = doc.data()
+
+    //             dispatch(setActiveUser(userData))
+
+    //         });
+    //     } catch (err) {
+    //         console.log(err)
+    //     }
+    // }
+
     const { userId } = useSelector(state => state.auth);
 
-    const tomarUsuarioDB = async (uid) => {
-        try {
-            LogBox.ignoreLogs(['Setting a timer']);
-            const q = query(collection(db, "usuarios"), where("uid", "==", uid));
-            const querySnapshot = await getDocs(q);
-            querySnapshot.forEach((doc) => {
-                let userData = doc.data()
-
-                dispatch(setActiveUser(userData))
-
-            });
-        } catch (err) {
-            console.log(err)
-        }
-    }
-
-    tomarUsuarioDB(userId)
+    dispatch(tomarUsuarioDB(userId))
 
     const { activeUser } = useSelector(state => state.auth);
 
+    // console.log(activeUser)
     return (
         <View style={styles.container}>
             <Image source={imagen} style={{ height: 150, width: 150, borderRadius: 200, marginTop: 20 }} />

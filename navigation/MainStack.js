@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 
-import LoginScreen from '../screens/Auth/LoginScreen';
 import SignInStack from './SignInStack';
 import { StyleSheet } from 'react-native'
 import TabStack from './TabStack';
@@ -14,6 +13,7 @@ import { tomarServicios } from '../redux/actions/servicios';
 
 
 export default function MenuStack() {
+
 
     const MainStack = createNativeStackNavigator();
 

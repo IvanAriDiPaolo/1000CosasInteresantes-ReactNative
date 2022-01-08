@@ -35,7 +35,7 @@ export default function Servicio() {
             {
                 logged
                     ?
-                    <Pressable style={styles.solicitar}>
+                    <Pressable style={styles.solicitar} onPress={() => alert('Esto está en desarrollo, aparecerarn en "Documentos')}>
                         <Text style={styles.solicitarTexto}> Solicitar </Text>
                     </Pressable>
                     :
