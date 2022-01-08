@@ -1,6 +1,6 @@
 import { LOG_IN_URL, SIGN_UP_URL } from "../../db/Database"
+import { agregarUsuarioDB, tomarDatosDeUsuario } from "../../helpers/agregarUsuarioDB"
 
-import { agregarUsuarioDB } from "../../helpers/agregarUsuarioDB"
 import { types } from "../types"
 
 export const registrar = (name, email, password) => {
@@ -110,7 +110,6 @@ export const loginUser = (email, password) => {
                     payload: data
                 })
             }
-
         } catch (error) {
             console.log(error)
         }
@@ -123,4 +122,9 @@ export const logoutUser = () => ({
 
 export const invitado = () => ({
     type: types.invitado
+})
+
+export const setActiveUser = (user) => ({
+    type: types.setActiveUser,
+    payload: user
 })

@@ -19,7 +19,8 @@ export const authReducer = (state = {}, action) => {
                 logged: false,
                 registrado: false,
                 token: null,
-                userId: null
+                userId: null,
+                activeUser: {},
             };
 
         case types.invitado:
@@ -33,6 +34,12 @@ export const authReducer = (state = {}, action) => {
             return {
                 ...state,
                 registrado: true
+            };
+
+        case types.setActiveUser:
+            return {
+                ...state,
+                activeUser: action.payload
             };
 
         default:

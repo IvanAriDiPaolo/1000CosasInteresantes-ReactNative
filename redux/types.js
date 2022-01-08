@@ -5,6 +5,7 @@ export const types = {
     logout: '[Auth] Logout',
     invitado: '[Auth] Invitado',
     registrado: '[Auth] Registrado',
+    setActiveUser: '[Auth] ActiveUser',
 
     //Noticias
     cargarNoticias: '[Noticias] Carga',
