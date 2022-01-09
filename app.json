@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "Coderhouse-RN-AppFinal",
-    "slug": "Coderhouse-RN-AppFinal",
-    "version": "1.0.0",
+    "name": "1000CosasInteresantes",
+    "slug": "1000CosasInteresantes",
+    "version": "2.1.2",
     "orientation": "portrait",
     "icon": "./assets/logo.png",
     "splash": {
-      "image": "./assets/inicio.png",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#333333"
+      "backgroundColor": "#2f558a"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -17,16 +17,22 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.coderhouse.1000cosasinteresantes",
+      "buildNumber": "2.1.2",
       "supportsTablet": true
     },
     "android": {
+      "package": "com.coderhouse.cosasinteresantes1000",
+      "versionCode": 4,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "foregroundImage": "./assets/logo.png",
+        "backgroundColor": "#2f558a"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    }
+      "favicon": "./assets/logo.png"
+    },
+    "description": "",
+    "githubUrl": "https://github.com/IvanAriDiPaolo/Coderhouse-ReactNative-ProyectoFinal"
   }
 }
