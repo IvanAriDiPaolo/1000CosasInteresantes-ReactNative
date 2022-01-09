@@ -10,6 +10,7 @@ import {
 } from 'react-native'
 import React, { useState } from 'react'
 
+import ImageSelector from '../../components/SignIn/ImageSelector';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { LogBox } from 'react-native';
 import MyTextInput from '../../components/SignIn/MyTextInput';
@@ -21,6 +22,7 @@ import { useForm } from '../../hooks/useForm';
 
 export default function RegisterScreen({ navigation }) {
 
+    const [imagen, setImagen] = useState(null)
     const [showPassword, setshowPassword] = useState(false)
     const [showPassword2, setshowPassword2] = useState(false)
 
@@ -48,7 +50,7 @@ export default function RegisterScreen({ navigation }) {
 
     const handleRegister = () => {
         if (name !== '' && password2 !== '' && password === password2) {
-            dispatch(registrar(name, email, password));
+            dispatch(registrar(name, email, password, imagen));
 
             navigation.navigate('Login');
         } else {
@@ -65,6 +67,7 @@ export default function RegisterScreen({ navigation }) {
                 >
                     CREA TU CUENTA
                 </Text>
+                <ImageSelector setImagen={setImagen} />
                 <MyTextInput
                     value={name}
                     name="name"

@@ -34,10 +34,11 @@ export default function PerfilScreen() {
 
     const { activeUser } = useSelector(state => state.auth);
 
+
     // console.log(activeUser)
     return (
         <View style={styles.container}>
-            <Image source={imagen} style={{ height: 150, width: 150, borderRadius: 200, marginTop: 20 }} />
+            <Image source={{ uri: activeUser.imagen }} style={{ height: 150, width: 150, borderRadius: 200, marginTop: 20 }} />
             {/* <Pressable>
                 <Text style={{ color: '#48c5cd', marginTop: 5 }}> Cambiar foto de perfil </Text>
             </Pressable> */}

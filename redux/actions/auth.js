@@ -6,7 +6,7 @@ import { LogBox } from "react-native"
 import { db } from "../../db/firestore"
 import { types } from "../types"
 
-export const registrar = (name, email, password) => {
+export const registrar = (name, email, password, imagen) => {
     return async dispatch => {
         try {
             const response = await fetch(SIGN_UP_URL, {
@@ -58,7 +58,7 @@ export const registrar = (name, email, password) => {
                     payload: data
                 });
 
-                agregarUsuarioDB(data.localId, name, email);
+                agregarUsuarioDB(data.localId, name, email, imagen);
 
             }
 
