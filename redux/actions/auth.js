@@ -2,6 +2,7 @@ import { LOG_IN_URL, SIGN_UP_URL } from "../../db/Database"
 import { agregarUsuarioDB, tomarDatosDeUsuario } from "../../helpers/agregarUsuarioDB"
 import { collection, getDocs, query, where } from "firebase/firestore"
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LogBox } from "react-native"
 import { db } from "../../db/firestore"
 import { types } from "../types"
@@ -119,13 +120,31 @@ export const loginUser = (email, password) => {
     }
 }
 
-export const logoutUser = () => ({
-    type: types.logout
-})
+export const logoutUser = () => {
+    return async dispatch => {
+        try {
+            await AsyncStorage.removeItem('@invitado')
+        } catch (e) {
+            console.log(e)
+        }
+        dispatch({
+            type: types.logout
+        })
+    }
+}
 
-export const invitado = () => ({
-    type: types.invitado
-})
+export const invitado = () => {
+    return async dispatch => {
+        try {
+            await AsyncStorage.setItem('@invitado', 'ok')
+        } catch (e) {
+            console.log(e)
+        }
+        dispatch({
+            type: types.invitado
+        })
+    }
+}
 
 export const setActiveUser = (user) => ({
     type: types.setActiveUser,
@@ -150,6 +169,21 @@ export const tomarUsuarioDB = (uid) => {
             });
         } catch (err) {
             console.log(err)
+        }
+    }
+}
+
+export const initAuth = () => {
+    return async dispatch => {
+        try {
+            const invitado = await AsyncStorage.getItem('@invitado')
+            if (invitado !== null) {
+                dispatch({
+                    type: types.invitado
+                })
+            }
+        } catch (error) {
+            console.log(error)
         }
     }
 }

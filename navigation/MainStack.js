@@ -5,6 +5,7 @@ import SignInStack from './SignInStack';
 import { StyleSheet } from 'react-native'
 import TabStack from './TabStack';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { initAuth } from '../redux/actions/auth';
 import { tomarDb } from '../redux/actions/db';
 import { tomarNoticias } from '../redux/actions/noticias';
 import { tomarServicios } from '../redux/actions/servicios';
@@ -23,6 +24,7 @@ export default function MenuStack() {
         dispatch(tomarNoticias())
         dispatch(tomarServicios())
         dispatch(tomarDb())
+        dispatch(initAuth())
     }, [])
 
     const { logged } = useSelector(state => state.auth);

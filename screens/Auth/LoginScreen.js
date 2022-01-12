@@ -1,14 +1,12 @@
 import * as React from 'react'
 
 import {
-    Button,
     Image,
     Keyboard,
     Linking,
     Pressable,
     StyleSheet,
     Text,
-    TextInput,
     TouchableWithoutFeedback,
     View
 } from 'react-native';
@@ -46,8 +44,9 @@ export default LoginScreen = ({ navigation }) => {
         dispatch(loginUser(email, password))
     }
 
-    const handleInvitado = () => {
-        dispatch(invitado())
+    const handleInvitado = async () => {
+        dispatch(invitado());
+
     }
 
     const handleToggleScreen = () => {
@@ -55,7 +54,6 @@ export default LoginScreen = ({ navigation }) => {
     }
 
     const { registrado } = useSelector(state => state.auth)
-
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
